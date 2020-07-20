@@ -1,0 +1,38 @@
+//**********************动态路由***********************
+
+{
+  "ReRoutes": [],
+  "Aggregates": [],
+  "GlobalConfiguration": {
+    "RequestIdKey": null,
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500,
+      "Type": "Consul" //由Consul提供服务发现
+    },
+    "RateLimitOptions": {
+      "ClientIdHeader": "ClientId",
+      "QuotaExceededMessage": "This is QuotaExceededMessage", // 当请求过载被截断时返回的消息
+      "RateLimitCounterPrefix": "ocelot",
+      "DisableRateLimitHeaders": false,
+      "HttpStatusCode": 429 // 当请求过载被截断时返回的http status
+    },
+    "QoSOptions": {
+      "ExceptionsAllowedBeforeBreaking": 3, //允许多少个异常请求
+      "DurationOfBreak": 10000, // 熔断的时间，单位为ms
+      "TimeoutValue": 10000 //如果下游请求的处理时间超过多少则自如将请求设置为超时 默认90秒
+    },
+    "BaseUrl": "http://localhost:6299", //网关对外地址
+    "LoadBalancerOptions": {
+      "Type": "RoundRobin", // "LeastConnection-最少连接数的服务器" "NoLoadBalance不负载均衡",
+      "Key": null,
+      "Expiry": 0
+    },
+    "DownstreamScheme": "http",
+    "HttpHandlerOptions": {
+      "AllowAutoRedirect": false, //指示请求是否应该遵循重定向响应。 如果请求应该自动遵循来自Downstream资源的重定向响应，则将其设置为true; 否则为假。 默认值是true。
+      "UseCookieContainer": false, //该值指示处理程序是否使用CookieContainer属性来存储服务器Cookie，并在发送请求时使用这些Cookie。 默认值是true。
+      "UseTracing": false
+    }
+  }
+}
