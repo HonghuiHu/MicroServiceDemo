@@ -16,8 +16,8 @@ namespace Service1.Common
                 c.Address = new Uri(configuration["Consul:Client:Address"]);
                 c.Datacenter = configuration["Consul:Client:Datacenter"];
             });
-            string ip = configuration["Consul:IP"];
-            int port = int.Parse(configuration["Consul:Port"]);
+            string ip = configuration["IP"];
+            int port = int.Parse(configuration["Port"]);
             int weight = string.IsNullOrWhiteSpace(configuration["Consul:Weight"]) ? 1 : int.Parse(configuration["Consul:Weight"]);
 
             client.Agent.ServiceRegister(new AgentServiceRegistration()

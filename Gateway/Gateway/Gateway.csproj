@@ -9,6 +9,12 @@
     <PackageReference Include="Ocelot.Provider.Polly" Version="14.0.9" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="configuration.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 

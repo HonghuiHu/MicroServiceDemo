@@ -7,7 +7,7 @@
     "RequestIdKey": null,
     "ServiceDiscoveryProvider": {
       "Host": "localhost",
-      "Port": 8500,
+      "Port": 8550,
       "Type": "Consul" //由Consul提供服务发现
     },
     "RateLimitOptions": {

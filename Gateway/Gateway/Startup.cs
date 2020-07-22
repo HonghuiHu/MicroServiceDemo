@@ -29,7 +29,7 @@ namespace Gateway
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddOcelot()
+            services.AddOcelot(Configuration)
                 .AddConsul()
                 .AddPolly();//如何处理
             //services.AddControllers();
@@ -38,11 +38,12 @@ namespace Gateway
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseOcelot();//去掉默认管道，使用Ocelot管道处理请求
             //if (env.IsDevelopment())
             //{
             //    app.UseDeveloperExceptionPage();
             //}
+            app.UseOcelot().Wait();//去掉默认管道，使用Ocelot管道处理请求
+            
 
             //app.UseHttpsRedirection();
 
