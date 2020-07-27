@@ -3,6 +3,18 @@
 {
   "ReRoutes": [],
   "Aggregates": [],
+  "DynamicRoutes": [//限流
+    {
+      "ServiceName": "demo-service",//服务名
+      "RateLimitRule": {
+        "ClientWhitelist": [], //白名单
+        "EnableRateLimiting": true, //true  启动流量限制  false 不启动 
+        "Period": "1m", //s 秒  m 分 h 时 d 天
+        "PeriodTimespan": 10.0, //当到达限制后，多少秒后解除限制
+        "Limit": 100 //在指定的时间内，可以返回几次
+      }
+    }
+  ],
   "GlobalConfiguration": {
     "RequestIdKey": null,
     "ServiceDiscoveryProvider": {
